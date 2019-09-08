@@ -14,11 +14,11 @@
     props:{//指定属性名和属性值
       comment:Object,
       deleteComment:Function,
-
+      index:Number
     },
     methods:{
       delete1(){
-        alert(2)
+        alert(this.index)
         const iiii = this.index;
         this.deleteComment(iiii);
       }
