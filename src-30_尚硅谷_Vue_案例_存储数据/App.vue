@@ -17,11 +17,14 @@
  export default{
    data(){
       return{
-        todos:[
+        /*todos:[
           {title:'学习Vue',complete:false},
           {title:'学习springboot',complete:true},
           {title:'打篮球',complete:false}
-        ]
+        ]*/
+        //从localStorage读取数据todos
+        /*src-30_尚硅谷_Vue_案例_存储数据*//*从浏览器中获取数据*/
+        todos:JSON.parse(window.localStorage.getItem('todos_key') || '[]')
       }
    },
    methods:{
@@ -44,6 +47,16 @@
      }
    },
    //存数据todos-深度监视
+   watch:{
+     todos: {
+       //watch虽可以监听，但只是浅监听，只监听数据第一层或者第二层。比如对于整个对象的监听，需要用到深度监听
+       deep: true,
+       handler: function (value) {
+         //将todos最新的值json数据，保存到localStorage中
+         window.localStorage.setItem('todos_key', JSON.stringify(value))
+       }
+     }
+   },
    components:{
      TodoHeader,TodoList,TodoFooter
    }
