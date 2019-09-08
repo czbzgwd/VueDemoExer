@@ -10,7 +10,7 @@
       </div>
     </header>
     <div class="container">
-      <Add v-on:addComment="addComment1"/>
+      <Add :addComment="addComment"/>
    <!--   //组件间通信,将comments中的数据传到List中-->
       <List :comments="comments" :deleteComment="deleteComment"/>
     </div>
@@ -47,7 +47,7 @@
       /*unshift() 方法可向数组的开头添加一个或更多元素，并返回新的长度。
        注意： 该方法将改变数组的数目。
        提示: 将新项添加到数组末尾，请使用 push() 方法。*/
-      addComment1(comment){
+      addComment(comment){
         this.comments.unshift(comment);
       },
       deleteComment(index){

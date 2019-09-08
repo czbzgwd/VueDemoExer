@@ -19,12 +19,12 @@
 </template>
 <script>
   export default{
-   /* props:{
+    props:{
       addComment:{
        type: Function,
         required:true
       },
-    },*/
+    },
     data(){
       return{
         name:'',
@@ -33,12 +33,10 @@
     },
     methods:{
       add(){
-       // alert(1)
         const name = this.name;
         const content = this.content;
-        const comment = {name,content}
-        this.$emit('addComment',comment)//如果使用
-       // this.addComment(comment);
+        const comment = {name,content};
+        this.addComment(comment);
       }
     }
 
