@@ -5,13 +5,14 @@
       <div class="todo-wrap">
         <!--<TodoHeader @addTodo="addTodo"/>--><!--给TodoHeader绑定事件监听addTodo-->
         <TodoHeader ref="header"/>
-        <TodoList :todos="todos" :deleteTodo="deleteTodo"/>
+        <TodoList :todos="todos" />
         <TodoFooter :todos="todos" :selectAllTodos="selectAllTodos" :deleteCompleteTodos="deleteCompleteTodos"/>
       </div>
     </div>
   </div>
 </template>
 <script>
+  import Pubsub from 'pubsub-js'
  import TodoHeader from  './components/TodoHeader.vue'
   import TodoList from  './components/TodoList.vue'
   import TodoFooter from  './components/TodoFooter.vue'
@@ -32,6 +33,11 @@
      //给<TodoHeader/>绑定addTodo事件监听
      // this.$on('addTodo',this.addTodo)给app绑定事件监听
     this.$refs.header.$on('addTodo',this.addTodo)
+     //订阅消息
+     Pubsub.subscribe('deleteTodo',(msg,index) =>{
+       this.deleteTodo(index)
+     })
+
    },
    methods:{
      addTodo(todo){

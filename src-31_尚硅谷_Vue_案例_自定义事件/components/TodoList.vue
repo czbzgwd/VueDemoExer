@@ -2,7 +2,7 @@
   <div>
     <ul class="todo-main">
        <TodoItem v-for="(todo,index) in todos" :key="index" :todo="todo" :index="index"
-       :deleteTodo="deleteTodo"/>
+       />
     </ul>
   </div>
 </template>
@@ -12,7 +12,6 @@
     //props:'todos'],
     props:{
       todos:Array,
-      deleteTodo:Function
     },
     components:{
       TodoItem
