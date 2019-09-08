@@ -8,12 +8,12 @@
   </li>
 </template>
 <script>
-  import Pubsub from 'pubsub-js'
   export default{
    // props:['todo']
     props:{
       todo:Object,
       index:Number,
+      deleteTodo:Function
     },
     data(){
       return{
@@ -34,9 +34,7 @@
       deleteItem(){
       const {todo,index,deleteTodo} = this
         if(window.confirm('确认删除'+todo.title+'吗？')){
-         //      deleteTodo(index)
-          //消息的发布
-          Pubsub.publish('deleteTodo',index)
+               deleteTodo(index)
         }
       }
     }
